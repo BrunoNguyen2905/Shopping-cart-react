@@ -17,6 +17,21 @@ export const Wrapper = styled.div`
         max-height: 250px;
         object-fit: cover;
         border-radius: 20px 20px 0 0;
+
+        @media(min-width: 960px) {
+            max-height: 143px
+        }
+
+        @media(min-width: 1024px) {
+            max-height: 204px
+        }
+        @media(min-width: 1350px) {
+            max-height: 210px
+        }
+        @media(min-width: 1575px) {
+            max-height: 250px
+        }
+
     }
 
     div {
