@@ -1,19 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
-import {QueryClient, QueryClientProvider} from 'react-query'
-import { ThemeProvider } from './components/ThemeProvider/ThemeProvider';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ThemeProvider } from "./components/ThemeProvider/ThemeProvider";
 
 const client = new QueryClient();
 
 ReactDOM.render(
+  <ThemeProvider>
     <QueryClientProvider client={client}>
-      <ThemeProvider>
-        <App />
-      </ThemeProvider>
+      <App />
     </QueryClientProvider>
-  ,
-  document.getElementById('root')
+  </ThemeProvider>,
+
+  document.getElementById("root")
 );
-
-

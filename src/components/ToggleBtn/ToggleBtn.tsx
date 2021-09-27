@@ -16,7 +16,7 @@ const ToggleBtn: React.FC<ToggleBtnProps> = ({ theme, toggleTheme }) => {
         <div>{theme === "dark" ? <MoonIcon /> : <></>}</div>
         <div> {theme === "light" ? <SunIcon /> : <></>}</div>
         <CheckboxBall
-          isDarkMode={theme === "light" ? true : false}
+          isDarkMode={theme === "light" ? false : true}
         ></CheckboxBall>
       </CheckboxLabel>
     </Wrapper>

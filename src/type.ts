@@ -37,3 +37,7 @@ export type ToggleBtnProps = {
   theme: string;
   toggleTheme: () => void;
 };
+
+export type DarkModeProps = {
+  isDarkMode: boolean;
+};

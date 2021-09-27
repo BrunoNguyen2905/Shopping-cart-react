@@ -1,25 +1,27 @@
-import Button from '@material-ui/core/Button'
+import { useContext } from "react";
 //Types
-import { ItemProps } from '../../type' 
+import { ItemProps } from "../../type";
+import { ThemeContext } from "../ThemeProvider/ThemeProvider";
 //styles
-import {Wrapper} from './Item.style';
+import { Wrapper, StyledBtn } from "./Item.style";
 
-
-const Item: React.FC<ItemProps> = ({
-    item,
-    handleAddToCart
-}) => (
+const Item: React.FC<ItemProps> = ({ item, handleAddToCart }) => {
+  const { theme } = useContext(ThemeContext);
+  return (
     <Wrapper>
-        <img src= {item.image} alt={item.title} />
-        <div>
-            <h3>{item.title}</h3>
-            <p>{item.description}</p>
-            <h3>${item.price}</h3>
-        </div>
-        <Button onClick={() => handleAddToCart(item)}>
-            Add to cart
-        </Button>
+      <img src={item.image} alt={item.title} />
+      <div>
+        <h3>{item.title}</h3>
+        <p>{item.description}</p>
+        <h3>${item.price}</h3>
+      </div>
+      <StyledBtn
+        onClick={() => handleAddToCart(item)}
+        isDarkMode={theme === "light" ? false : true}
+      >
+        Add to cart
+      </StyledBtn>
     </Wrapper>
-)
-
+  );
+};
 export default Item;

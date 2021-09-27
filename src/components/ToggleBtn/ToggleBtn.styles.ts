@@ -1,16 +1,11 @@
 import styled from "styled-components";
 import { WbSunny, NightsStay } from "@material-ui/icons";
-
-type CheckBoxBallProps = {
-    isDarkMode: boolean
-}
-
-export const Wrapper = styled.div`
-  margin-bottom: 15px;
-`;
+import {DarkModeProps } from '../../type'
 
 
-export const CheckboxBall = styled.div<CheckBoxBallProps>`
+export const Wrapper = styled.div``;
+
+export const CheckboxBall = styled.div<DarkModeProps>`
   cursor: pointer;
   width: 15px;
   height: 15px;
@@ -20,7 +15,8 @@ export const CheckboxBall = styled.div<CheckBoxBallProps>`
   left: 2px;
   border-radius: 50%;
   transition: transform 0.2s linear;
-  transform: ${props => (props.isDarkMode ? 'translateX(0)' : `translateX(20px)`)};
+  transform: ${(props) =>
+    props.isDarkMode ? "translateX(20px)" : `translateX(0)`};
 `;
 export const CheckboxLabel = styled.label`
   cursor: pointer;
@@ -34,9 +30,8 @@ export const CheckboxLabel = styled.label`
   padding: 5px;
   position: relative;
   transform: scale(1.5);
-
 `;
-export const CheckboxInput = styled.input.attrs({type: 'checkbox'})`
+export const CheckboxInput = styled.input.attrs({ type: "checkbox" })`
   opacity: 0;
   position: absolute;
 
@@ -49,12 +44,13 @@ export const CheckboxInput = styled.input.attrs({type: 'checkbox'})`
   }
 `;
 
-
 export const SunIcon = styled(WbSunny)`
   color: yellow;
   font-size: 10px;
+  padding-bottom: 3px;
 `;
 export const MoonIcon = styled(NightsStay)`
   color: pink;
   font-size: 10px;
+  padding-bottom: 3px;
 `;

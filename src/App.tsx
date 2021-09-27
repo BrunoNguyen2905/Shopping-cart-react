@@ -2,17 +2,18 @@ import { useState, useContext } from "react";
 import { useQuery } from "react-query";
 import axios from "axios";
 //Components
+import { ThemeContext } from "./components/ThemeProvider/ThemeProvider";
 import ToggleBtn from "./components/ToggleBtn/ToggleBtn";
 import Item from "./components/Item/Item";
 import Cart from "./components/Cart/Cart";
-import Drawer from "@material-ui/core/Drawer";
-import LinearProgress from "@material-ui/core/LinearProgress";
-import Grid from "@material-ui/core/Grid";
-import { AddShoppingCart } from "@material-ui/icons";
-import Badge from "@material-ui/core/Badge";
-import { ThemeContext } from "./components/ThemeProvider/ThemeProvider";
+import {LinearProgress, Grid, Badge, Drawer} from "@material-ui/core";
 //styles
-import { Wrapper, StyledButton } from "./App.styles";
+import {
+  Wrapper,
+  StyledButton,
+  DarkModeStyledButton,
+  StyledAddShoppingCartIcon,
+} from "./App.styles";
 //Types
 import { CartItemType } from "./type";
 
@@ -32,7 +33,7 @@ const App: React.FC = () => {
     "products",
     getProducts
   );
-  
+
   const getTotalItems = (items: CartItemType[]) =>
     items.reduce((ack: number, item) => ack + item.amount, 0);
 
@@ -79,10 +80,15 @@ const App: React.FC = () => {
           removeFromCart={handleRemoveFromCart}
         />
       </Drawer>
-      <ToggleBtn theme={theme} toggleTheme={toggleTheme} />
+      <DarkModeStyledButton>
+        <ToggleBtn theme={theme} toggleTheme={toggleTheme} />
+      </DarkModeStyledButton>
+
       <StyledButton onClick={() => setCartOpen(true)}>
         <Badge badgeContent={getTotalItems(cartItems)} color="error">
-          <AddShoppingCart />
+          <StyledAddShoppingCartIcon
+            isDarkMode={theme === "light" ? false : true}
+          />
         </Badge>
       </StyledButton>
       <Grid container spacing={3}>

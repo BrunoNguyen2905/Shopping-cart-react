@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import Button from '@material-ui/core/Button'
+import { DarkModeProps } from '../../type';
 
 export const Wrapper = styled.div`
     display: flex;
@@ -41,3 +43,6 @@ export const Wrapper = styled.div`
     }
 `;
 
+export const StyledBtn =  styled(Button)<DarkModeProps>`
+color: ${(props) => props.isDarkMode ? '#FFF': '#333'};
+`
